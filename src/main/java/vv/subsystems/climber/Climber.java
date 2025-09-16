@@ -5,6 +5,7 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -66,6 +67,9 @@ public class Climber extends SubsystemBase {
                 .withMotorOutput(new MotorOutputConfigs().withInverted(InvertedValue.Clockwise_Positive))
             );
         }
+
+        pivotMotor.setNeutralMode(NeutralModeValue.Brake);
+        rollerMotor.setNeutralMode(NeutralModeValue.Brake);
     }
 
     public Command runPivotForward() {

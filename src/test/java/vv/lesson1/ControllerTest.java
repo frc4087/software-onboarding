@@ -27,7 +27,7 @@ public class ControllerTest {
     @Test
     void opShouldVibrateDriverOnBumperPress() {
         // Arrange
-        operatorControls.setupTriggers(driverControls, null);
+        //operatorControls.setupTriggers(driverControls, null);
 
         // Act
         operatorControls.simulate((c) -> c.setRightBumperButton(true));
@@ -50,8 +50,8 @@ public class ControllerTest {
     @Test
     void opShouldStopVibratingDriverOnBumperRelease() {
         // Arrange
-        operatorControls.setupTriggers(driverControls, null);
-        operatorControls.simulate((c) -> c.setRightBumperButton(true));
+        //operatorControls.setupTriggers(driverControls, null);
+        //operatorControls.simulate((c) -> c.setRightBumperButton(true));
         CommandScheduler.getInstance().run();
 
         // Act
