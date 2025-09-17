@@ -35,7 +35,7 @@ public class Robot extends TimedRobot{
     }
 
     private void setupTriggers(){
-        operatorControls.setupTriggers(driverControls, null);
+        operatorControls.setupTriggers(driverControls);
     }
 
 }

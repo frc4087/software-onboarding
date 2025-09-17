@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import vv.config.VVConfig;
-import vv.subsystems.climber.Climber;
 
 public class OperatorControls {
     private final CommandXboxController controller;
@@ -20,13 +19,8 @@ public class OperatorControls {
         sim = new XboxControllerSim(controller.getHID());
     }
 
-    public void setupTriggers(DriverControls driverControls, Climber climber) {
+    public void setupTriggers(DriverControls driverControls) {
         controller.rightBumper().whileTrue(driverControls.rumble());
-
-        controller.povUp().whileTrue(climber.runPivotForward());
-        controller.povDown().whileTrue(climber.runPivotBackward());
-        
-        controller.povRight().whileTrue(climber.runRollers());
     }
 
     public CommandXboxController controls() {
