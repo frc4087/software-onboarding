@@ -6,14 +6,14 @@ import vv.config.ArmConfig;
 
 public class ArmSubsystem extends SubsystemBase {
     ArmMotor motor;
-    private ArmState state = ArmState.RESETTING;
+    private ArmState state = ArmState.RESET;
     ArmConfig config;
 
     public enum ArmState {
         SNAP_UP,
         SNAP_DOWN,
         RUNNING_UP,
-        RESETTING
+        RESET
     }
 
     public ArmSubsystem(ArmConfig config) {
@@ -33,7 +33,7 @@ public class ArmSubsystem extends SubsystemBase {
             case RUNNING_UP -> {
                 this.motor.setSpeed(config.resetSpeed());
             }
-            case RESETTING -> {
+            case RESET -> {
                 this.motor.reset();
             }
         }
@@ -60,7 +60,7 @@ public class ArmSubsystem extends SubsystemBase {
 	public Command runUp() {
 		return this.runEnd(
                 () -> setState(ArmState.RUNNING_UP),
-                () -> setState(ArmState.RESETTING)
+                () -> setState(ArmState.RESET)
             )
             .withName("Arm::RunUp");
 	}
