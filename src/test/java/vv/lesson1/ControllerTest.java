@@ -27,7 +27,7 @@ public class ControllerTest {
     @Test
     void opShouldVibrateDriverOnBumperPress() {
         // Arrange
-        //operatorControls.setupTriggers(driverControls, null);
+        operatorControls.setupTriggers(driverControls);
 
         // Act
         operatorControls.simulate((c) -> c.setRightBumperButton(true));
