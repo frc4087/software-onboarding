@@ -1,11 +1,11 @@
 package vv;
 
 import edu.wpi.first.wpilibj.RobotBase;
-import vv.lesson1.Robot;
+import vv.lesson2.Robot;
 
 public class Main {
     public static void main(String[] args) {
         // Change the import (vv.lessonX.Robot) for each meeting
-        RobotBase.startRobot(Robot::start);
+        RobotBase.startRobot(Robot::new);
     }
 }

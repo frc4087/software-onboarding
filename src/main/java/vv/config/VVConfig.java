@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Filesystem;
 public class VVConfig {
 
     private final DrivetrainConfig drivetrainConfig; 
+    private final ClimberConfig climberConfig;
     private final PIDConfig pid;
     private final SimulationConfig simulation;
     private final ControllersConfig controllers;
@@ -18,6 +19,7 @@ public class VVConfig {
     private VVConfig(String filePath) {
         var props = readFileConfig(filePath);
         this.drivetrainConfig = DrivetrainConfig.fromProperties(props);
+        this.climberConfig = ClimberConfig.fromProperties(props);
         this.pid = PIDConfig.fromProperties(props);
         this.simulation = SimulationConfig.fromProperties(props);
         this.controllers = ControllersConfig.fromProperties(props);
@@ -25,6 +27,10 @@ public class VVConfig {
 
     public DrivetrainConfig drivetrain() {
         return this.drivetrainConfig;
+    }
+
+    public ClimberConfig climber() {
+        return this.climberConfig;
     }
 
     public PIDConfig pid() {

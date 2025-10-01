@@ -1,32 +1,28 @@
-package vv.lesson1;
+package vv.lesson2;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import vv.config.VVConfig;
-import vv.lesson1.controls.DriverControls;
-import vv.lesson1.controls.OperatorControls;
+import vv.lesson2.controls.DriverControls;
+import vv.lesson2.controls.OperatorControls;
+import vv.subsystems.climber.Climber;
 
 public class Robot extends TimedRobot{
-    
-    public static Robot instance = null;
 
     VVConfig config;
     DriverControls driverControls;
     OperatorControls operatorControls;
 
-    private Robot() {
+    Climber climber;
+    
+    public Robot() {
         config = VVConfig.readFromDeployDirectory("practice-robot.properties");
         driverControls = new DriverControls(config);
         operatorControls = new OperatorControls(config);
 
-        setupTriggers();
-    }
+        climber = new Climber(config);
 
-    public static Robot start() {
-        if (Robot.instance == null) {
-            Robot.instance = new Robot();
-        }
-        return Robot.instance;
+        setupTriggers();
     }
 
     @Override
@@ -34,8 +30,8 @@ public class Robot extends TimedRobot{
         CommandScheduler.getInstance().run();
     }
 
-    private void setupTriggers(){
-        operatorControls.setupTriggers(driverControls);
+    private void setupTriggers() {
+        operatorControls.setupTriggers(climber);
     }
 
 }
