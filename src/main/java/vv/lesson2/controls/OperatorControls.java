@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import vv.config.VVConfig;
-import vv.subsystems.climber.Climber;
+import vv.lesson2.climber.Climber;
 
 public class OperatorControls {
     private final CommandXboxController controller;
