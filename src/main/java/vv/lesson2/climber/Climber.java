@@ -1,4 +1,4 @@
-package vv.subsystems.climber;
+package vv.lesson2.climber;
 
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;

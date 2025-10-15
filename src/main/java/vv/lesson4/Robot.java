@@ -1,29 +1,24 @@
-package vv.lesson2;
+package vv.lesson4;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import vv.config.VVConfig;
-import vv.lesson2.climber.Climber;
-import vv.lesson2.controls.DriverControls;
-import vv.lesson2.controls.OperatorControls;
+import vv.lesson4.controls.DriverControls;
+import vv.lesson4.drivetrain.Drivetrain;
+import vv.lesson4.drivetrain.DrivetrainFactory;
 
-public class Robot extends TimedRobot{
+public class Robot extends TimedRobot {
 
     public static Robot instance = null;
 
     VVConfig config;
     DriverControls driverControls;
-    OperatorControls operatorControls;
+    Drivetrain drivetrain;
 
-    Climber climber;
-    
     private Robot() {
         config = VVConfig.readFromDeployDirectory("practice-robot.properties");
         driverControls = new DriverControls(config);
-        operatorControls = new OperatorControls(config);
-
-        climber = new Climber(config);
-
+        drivetrain = DrivetrainFactory.createDrivetrain(config);
         setupTriggers();
     }
 
@@ -32,8 +27,13 @@ public class Robot extends TimedRobot{
         CommandScheduler.getInstance().run();
     }
 
+    @Override
+    public void testInit() {
+        // Put the command you want to test here
+    }
+
     private void setupTriggers() {
-        operatorControls.setupTriggers(climber);
+        driverControls.setupTriggers(config, drivetrain);
     }
 
     public static Robot start() {
